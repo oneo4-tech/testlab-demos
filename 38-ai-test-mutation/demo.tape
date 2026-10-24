@@ -23,3 +23,7 @@ Type "# now break the code: the discount becomes a markup" Enter
 Sleep 1s
 Type "./demo/mutate.sh" Sleep 300ms Enter
 Sleep 8s
+Type "# a second mutant: a full discount is now refused" Enter
+Sleep 1s
+Type "./demo/mutate.sh boundary" Sleep 300ms Enter
+Sleep 8s

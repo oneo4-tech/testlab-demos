@@ -26,7 +26,7 @@ Then break the code on purpose and watch which tests notice:
 ./demo/mutate.sh
 ```
 
-It flips one sign so the discount becomes a markup, runs both test files, and restores the code. The AI-written tests stay green; the tester's tests fail.
+It flips one sign so the discount becomes a markup, runs both test files, and restores the code. The AI-written tests stay green; the tester's tests fail. `./demo/mutate.sh boundary` tries a second mutant: a full discount is refused, and only the tester's tests notice.
 
 Record the terminal demo with `vhs demo.tape`; it writes `demo.mp4`, which git ignores.
 
