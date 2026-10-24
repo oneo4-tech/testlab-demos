@@ -1,0 +1,6 @@
+# Recorded media stays out of git.
+*.gif
+*.mp4
+*.pyc
+*.webm
+__pycache__/
