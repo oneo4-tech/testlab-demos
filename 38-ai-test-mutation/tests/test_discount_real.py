@@ -7,6 +7,10 @@ def test_ten_percent_off():
     assert apply_discount(100, 10) == 90.0
 
 
+def test_no_discount_keeps_the_price():
+    assert apply_discount(100, 0) == 100.0
+
+
 def test_full_discount_is_free():
     assert apply_discount(59.99, 100) == 0.0
 

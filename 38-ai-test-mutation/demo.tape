@@ -27,3 +27,14 @@ Type "# a second mutant: a full discount is now refused" Enter
 Sleep 1s
 Type "./demo/mutate.sh boundary" Sleep 300ms Enter
 Sleep 8s
+Type "clear" Enter
+Type "# the AI kit, step 1: tests that check their own fake" Enter
+Sleep 800ms
+Type "ai-kit/scripts/find_self_mocks.py tests/test_discount_ai.py" Sleep 300ms Enter
+Sleep 4s
+Type "# step 2: break the code five ways. Which tests notice?" Enter
+Sleep 800ms
+Type "ai-kit/scripts/mutation_smoke.py demo/discount.py -- uvx pytest tests/test_discount_ai.py" Sleep 300ms Enter
+Sleep 9s
+Type "ai-kit/scripts/mutation_smoke.py demo/discount.py -- uvx pytest tests/test_discount_real.py" Sleep 300ms Enter
+Sleep 9s

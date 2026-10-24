@@ -10,6 +10,7 @@ A one-character mutation leaves the AI-written tests green while a tester's test
 
 - `demo/`: the code the video shows.
 - `tests/`: the tests that prove the claim; they pass.
+- `ai-kit/`: rules, an agent skill, and scripts that make an AI agent check its tests can fail.
 - `demo.tape`: the [VHS](https://github.com/charmbracelet/vhs) tape that records the terminal demo.
 
 ## How to run
@@ -29,6 +30,32 @@ Then break the code on purpose and watch which tests notice:
 It flips one sign so the discount becomes a markup, runs both test files, and restores the code. The AI-written tests stay green; the tester's tests fail. `./demo/mutate.sh boundary` tries a second mutant: a full discount is refused, and only the tester's tests notice.
 
 Record the terminal demo with `vhs demo.tape`; it writes `demo.mp4`, which git ignores.
+
+## Use it with your AI agent
+
+The `ai-kit/` folder makes a coding agent ask the question this video is about: what would make this test fail?
+
+- `ai-kit/AGENTS.md`: rules to paste into your AGENTS.md, CLAUDE.md, Cursor rules, or Copilot instructions.
+- `ai-kit/skills/check-test-can-fail/`: an agent skill. For Claude Code, copy it into your project:
+
+  ```sh
+  mkdir -p .claude/skills && cp -r ai-kit/skills/check-test-can-fail .claude/skills/
+  ```
+
+  Other agents that read `SKILL.md` folders (for example under `.agents/skills/`) take the same folder.
+- `ai-kit/scripts/find_self_mocks.py`: flags tests that patch the function they call, or only check that a result exists.
+
+  ```sh
+  ai-kit/scripts/find_self_mocks.py tests/test_discount_ai.py
+  ```
+
+- `ai-kit/scripts/mutation_smoke.py`: breaks your code one operator at a time, in a temporary copy, and reports which faults your tests caught.
+
+  ```sh
+  ai-kit/scripts/mutation_smoke.py demo/discount.py -- uvx pytest tests/test_discount_real.py
+  ```
+
+Both scripts use only the Python standard library; copy them into any project.
 
 ## Video
 
