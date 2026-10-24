@@ -12,7 +12,7 @@ Set TypingSpeed 45ms
 Set WindowBar Colorful
 
 Hide
-Type `setopt interactivecomments && alias pytest='uv run -q --with pytest python -m pytest -p no:cacheprovider' && export PS1=$'\n%F{green}testlab%f $ ' && clear` Enter
+Type "setopt interactivecomments && alias pytest='uv run -q --with pytest python -m pytest -p no:cacheprovider' && export PS1='%F{green}testlab%f $ ' && c=1 && zshaddhistory() { [[ $1 == '#'* ]] && c=1 || c=0; } && precmd() { (( c )) || echo; } && clear" Enter
 Show
 Sleep 500ms
 # scene: sign
