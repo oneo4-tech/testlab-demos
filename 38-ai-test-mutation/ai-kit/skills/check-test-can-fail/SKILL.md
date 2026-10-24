@@ -10,7 +10,7 @@ description: Use after writing or changing unit tests, or when asked to review t
 1. **Name the unit under test** for each new or changed test, and the behaviour it claims to check.
 2. **Find self-mocks and empty asserts:** run `python ai-kit/scripts/find_self_mocks.py <test files>`. Fix every finding: patch only collaborators, never the function the test calls; assert the exact expected value.
 3. **Answer the tester's question** for each test in one line: "This test fails if ...". No answer means the test is not done.
-4. **Break the code on purpose:** run `python ai-kit/scripts/mutation_smoke.py <source file> -- <test command>`, for example `python ai-kit/scripts/mutation_smoke.py src/discount.py -- python -m pytest -q tests/test_discount.py`. It flips one operator at a time in a temporary copy of the project and runs the tests; your files are never changed.
+4. **Break the code on purpose:** run `python ai-kit/scripts/mutation_smoke.py <source file> -- <test command>`, for example `python ai-kit/scripts/mutation_smoke.py src/checkout.py -- python -m pytest -q tests/test_checkout.py`. It flips one operator at a time in a temporary copy of the project and runs the tests; your files are never changed.
 5. **Close the gaps:** for each surviving mutant that changes behaviour a user would notice, add or sharpen a test until it is killed. A surviving mutant that changes nothing observable may stay; say why.
 6. **Report:** the self-mock findings fixed, each test's "fails if" line, and the killed and surviving mutants.
 

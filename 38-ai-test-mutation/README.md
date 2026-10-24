@@ -4,7 +4,7 @@ The demo for a video of the OneO4TestLab channel.
 
 ## What it proves
 
-A one-character mutation leaves the AI-written tests green while a tester's tests fail.
+In a realistic checkout (prices in cents, coupon codes, a tax service), a one-character mutation leaves the AI-written tests green while a tester's tests fail.
 
 ## Layout
 
@@ -27,7 +27,7 @@ Then break the code on purpose and watch which tests notice:
 ./demo/mutate.sh
 ```
 
-It flips one sign so the discount becomes a markup, runs both test files, and restores the code. The AI-written tests stay green; the tester's tests fail. `./demo/mutate.sh boundary` tries a second mutant: a full discount is refused, and only the tester's tests notice.
+It prints the changed line, flips one sign so the coupon becomes a markup, runs both test files, and restores the code. The AI-written tests stay green; the tester's tests fail. `./demo/mutate.sh boundary` tries a second mutant: a 100% coupon is refused, and only the tester's tests notice.
 
 Record the terminal demo with `vhs demo.tape`; it writes `demo.mp4`, which git ignores.
 
@@ -46,13 +46,13 @@ The `ai-kit/` folder makes a coding agent ask the question this video is about: 
 - `ai-kit/scripts/find_self_mocks.py`: flags tests that patch the function they call, or only check that a result exists.
 
   ```sh
-  ai-kit/scripts/find_self_mocks.py tests/test_discount_ai.py
+  ai-kit/scripts/find_self_mocks.py tests/test_checkout_ai.py
   ```
 
 - `ai-kit/scripts/mutation_smoke.py`: breaks your code one operator at a time, in a temporary copy, and reports which faults your tests caught.
 
   ```sh
-  ai-kit/scripts/mutation_smoke.py demo/discount.py -- uvx pytest tests/test_discount_real.py
+  ai-kit/scripts/mutation_smoke.py demo/checkout.py -- uvx pytest tests/test_checkout_real.py
   ```
 
 Both scripts use only the Python standard library; copy them into any project.
