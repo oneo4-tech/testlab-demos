@@ -15,6 +15,7 @@ Hide
 Type "setopt interactivecomments && alias pytest='uv run -q --with pytest python -m pytest -p no:cacheprovider' && export PS1='%F{green}testlab%f $ ' && clear" Enter
 Show
 Sleep 500ms
+# scene: sign
 Type "# both test files pass on the correct code" Enter
 Sleep 800ms
 Type "pytest -q tests" Sleep 300ms Enter
@@ -23,11 +24,12 @@ Type "# now break the code: the discount becomes a markup" Enter
 Sleep 1s
 Type "./demo/mutate.sh" Sleep 300ms Enter
 Sleep 8s
+# scene: boundary
 Type "# a second mutant: a full discount is now refused" Enter
 Sleep 1s
 Type "./demo/mutate.sh boundary" Sleep 300ms Enter
-Sleep 8s
-Type "clear" Enter
+Sleep 14s
+# scene: kit
 Type "# the AI kit, step 1: tests that check their own fake" Enter
 Sleep 800ms
 Type "ai-kit/scripts/find_self_mocks.py tests/test_discount_ai.py" Sleep 300ms Enter
