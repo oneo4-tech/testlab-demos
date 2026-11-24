@@ -4,3 +4,4 @@
 *.pyc
 *.webm
 __pycache__/
+*.orig

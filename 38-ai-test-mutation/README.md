@@ -25,9 +25,12 @@ Then break the code on purpose and watch which tests notice:
 
 ```sh
 ./demo/mutate.sh
+uv run --with pytest python -m pytest -q --tb=no tests/test_checkout_ai.py
+uv run --with pytest python -m pytest -q --tb=no tests/test_checkout_real.py
+./demo/mutate.sh restore
 ```
 
-It prints the changed line, flips one sign so the coupon becomes a markup, runs both test files, and restores the code. The AI-written tests stay green; the tester's tests fail. `./demo/mutate.sh boundary` tries a second mutant: a 100% coupon is refused, and only the tester's tests notice.
+`mutate.sh` flips one sign so the coupon becomes a markup, and prints the changed line before and after. The AI-written tests stay green; three of the tester's tests fail. `./demo/mutate.sh restore` puts the correct code back. `./demo/mutate.sh boundary` tries a second mutant: a 100% coupon is refused, and only the tester's free-coupon test notices.
 
 Record the terminal demo with `vhs demo.tape`; it writes `demo.mp4`, which git ignores.
 
