@@ -62,7 +62,7 @@ Both scripts use only the Python standard library; copy them into any project.
 
 ## Video
 
-- Video: not published yet
+- Video: https://youtu.be/qnTGcbm5dOQ
 - Channel: [OneO4TestLab](https://www.youtube.com/@OneO4TestLab)
 - This folder: https://github.com/oneo4-tech/testlab-demos/tree/main/38-ai-test-mutation
 
